@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>岸桥小车导轨拼接曲线审计</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>岸桥小车导轨拼接曲线审计</h1>
+    <span id="api-status" class="pill">API 状态检测中…</span>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>曲线草稿</h2>
+      <p class="hint">按行进顺序录入 2~5 段三次贝塞尔曲线（每段 4 个整数控制点），以及统一的最大曲率限值。</p>
+      <div class="controls">
+        <label>段数
+          <select id="segment-count">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+        <label>统一最大曲率 κ<sub>max</sub>
+          <input id="max-curvature" type="number" min="0" step="any">
+        </label>
+      </div>
+      <div id="segments-editor"></div>
+      <div class="actions">
+        <button id="btn-example" type="button">载入示例</button>
+        <button id="btn-save" type="button">保存草稿</button>
+        <button id="btn-clear" type="button">清除草稿</button>
+        <button id="btn-audit" type="button" class="primary">发起审计</button>
+      </div>
+      <p id="draft-info" class="hint"></p>
+    </section>
+
+    <section class="panel" id="result-panel" hidden>
+      <h2>审计结果</h2>
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
